@@ -1,0 +1,189 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    margin-top: 20px;
+}
+
+form {
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+
+
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Phishing Website Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Phishing Website Detector</h1>
+    <form method="post">
+        <input type="text" name="url" placeholder="Enter URL" required>
+        <button type="submit">Check</button>
+    </form>
+    {% if prediction %}
+    <p>Result: <strong>{{ prediction }}</strong></p>
+{% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+app.py 
+from flask import Flask, render_template, request
+from model import predict_url
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    prediction = ""  # Set default value to empty string instead of None
+
+    if request.method == "POST":
+        url = request.form.get("url")
+        if url:  # Ensure url is not None before prediction
+            prediction = predict_url(url)
+
+    return render_template("index.html", prediction=prediction)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+model.py
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+import joblib
+from utils import extract_features
+
+# Load dataset
+data = pd.read_csv("phishing_data.csv")
+
+# Extract features
+data["features"] = data["url"].apply(lambda x: extract_features(x))
+X = pd.DataFrame(data["features"].tolist())
+y = data["label"]
+
+# Train model
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Save model
+joblib.dump(model, "model.pkl")
+
+# Predict function
+def predict_url(url):
+    features = extract_features(url)
+    model = joblib.load("model.pkl")
+    return "Phishing" if model.predict([list(features.values())])[0] == 1 else "Legitimate"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+utils.py 
+import urllib.parse
+
+def extract_features(url):
+    parsed_url = urllib.parse.urlparse(url)
+    
+    features = {
+        "url_length": len(url),
+        "num_special_chars": sum(1 for c in url if c in "-._?&=/#"),
+        "has_https": 1 if parsed_url.scheme == "https" else 0,
+        "contains_suspicious_word": 1 if any(word in url.lower() for word in ["login", "verify", "bank", "secure"]) else 0
+    }
+    
+    return features
+
+
+
+phishing.csv
+url,label
+http://secure-login.com,1
+https://www.google.com,0
+http://bank-verification.net,1
+https://amazon.com,0
+http://paypal-authentication.xyz,1
+https://github.com,0
+
+
+
+
