@@ -37,33 +37,18 @@ Enter a website link in the input field to classify *Phishing vs. Legitimate*.
    ├── phishing_data.csv  (Dataset)
 
 
-📊 Screenshots
-*Homepage*
 
 📄 License & Disclaimer
 - License:*MIT License  
 - Disclaimer: This tool is designed for *educational and cybersecurity research* purposes. It should not be used for offensive security operations or unauthorized testing.
 
-🎞 Demo Video
-🔗 YouTube Link: _[Insert Video Link Here]_  
-- Covers:
-  ✅ Introduction & Problem Statement  
-  ✅ Code Walkthrough  
-  ✅ Live Demo of URL Classification  
 
 📖 Research Paper 
 Includes:
 - AI-based phishing detection techniques  
 - Feature extraction methodologies  
 - ML model training and evaluation  
-- Ethical and cybersecurity considerations  
-
-📈 Presentation (Slides)
-🔗  
-- Introduction: Problem & Solution  
-- Code/Tool Breakdown  
-- Real-World Use Cases  
-- Future Enhancements  
+- Ethical and cybersecurity considerations 
 
 👨‍💻 Contributors
 - Pooja Waghmare & Pavan Nag
