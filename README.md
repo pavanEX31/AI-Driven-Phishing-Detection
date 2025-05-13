@@ -1,89 +1,75 @@
-AI-Driven Phishing Detection Tool - Complete Documentation
-=======================================================
+Phishing Website Detector
+An AI-powered cybersecurity tool to detect phishing websites using *Machine Learning and Flask*.
 
-Authors: Pavan Nag & Pooja Waghmare
-Organization: Digisuraksha Parhari Foundation
-GitHub Repository: github.com/pavanEX31/AI-Driven-Phishing-Detection
-
-1. TECHNICAL REPORT
--------------------
-
-1.1 Introduction
-Phishing causes 90% of cyber breaches. Our tool uses AI to classify URLs as phishing/legitimate in real-time with 95% accuracy.
-
-1.2 Technology Stack
-- Backend: Python + Flask
-- ML Model: Random Forest (Scikit-learn)
-- Frontend: HTML/Flask templates
-- Deployment: Joblib serialization
-
-1.3 Key Features
-✔ Real-time URL classification
-✔ Feature analysis (URL length, HTTPS, keywords)
-✔ User-friendly web interface
-✔ 95% model accuracy
-
-1.4 Installation
-1. Clone repository:
-   git clone https://github.com/pavanEX31/AI-Driven-Phishing-Detection.git
-2. Install dependencies:
-   pip install -r requirements.txt
-3. Run Flask app:
-   python app.py
-   (Access at http://localhost:5000)
-
-1.5 Future Enhancements
-- Browser extension development
-- Deep learning integration (LSTM)
-- Multi-language support
-
-2. GITHUB README
-----------------
-
-2.1 Repository Structure
-AI-Driven-Phishing-Detection/
-├── app.py                # Main application
-├── model/                # ML model files
-│   ├── classifier.joblib 
-│   └── feature_extractor.py
-├── templates/            # HTML files
-│   └── index.html
-├── static/               # CSS/JS assets
-├── requirements.txt      
-└── README.md
-
-2.2 Dataset & Performance
-- Dataset: 10,000+ URLs with 20+ features
-- Metrics:
-  - Precision: 94%
-  - Recall: 96%
-  - F1-Score: 95%
-
-2.3 Documentation Links
-- Full Report: Projects/Documentation/Report.pdf
-- Presentation: Projects/Project_Presentation.pptx
-- Market Study: Projects/Market_Study/Market_Analysis.pdf
-
-3. SUBMISSION GUIDELINES
-------------------------
-3.1 Required Files
-- Codebase (GitHub repository)
-- 10-30 slide PowerPoint presentation
-- 5-10 minute video demo
-- Market research document
-
-3.2 Directory Structure
-/Projects/AI-Driven_Phishing_Detection/
-   ├── Documentation/
-   ├── Code/
-   ├── Project_Presentation.pptx
-   ├── Video_Presentation.mp4
-   └── Market_Study/
-
-4. CONTACT
-----------
-For queries:
-- Pavan Nag: [nagpavan446@gmail.com]
+🔹 Overview
+Phishing scams are a major cybersecurity threat, tricking users into revealing sensitive information via fraudulent websites. Traditional blacklist-based detection is ineffective against dynamically created phishing domains.  
+This project applies *AI-driven phishing classification*, leveraging *Random Forest machine learning models* for real-time detection.
 
 
-License: MIT
+📌 Features
+✅ AI-Powered Phishing Detection (ML model predicts phishing risks)  
+✅ Feature-Based Analysis (Extracts key attributes from URLs)  
+✅ Web-Based Interface (Simple Flask-powered UI for users)  
+✅ Real-Time Classification (Identifies legitimate vs. phishing websites)  
+
+🚀 Setup Instructions
+1️⃣ Prerequisites
+python installation. Then, install dependencies:  
+
+pip install flask scikit-learn pandas numpy joblib
+
+2️⃣ Run the Application
+python app.py
+
+Open *http://127.0.0.1:5000/* in your browser.
+3️⃣ Test with URLs
+Enter a website link in the input field to classify *Phishing vs. Legitimate*.
+
+
+
+📁 Project Structure
+📁 phishing-detector/
+   ├── static/  (CSS & JavaScript)
+   ├── templates/  (HTML UI)
+   ├── app.py  (Flask backend)
+   ├── model.py  (ML-based classification)
+   ├── utils.py  (Feature extraction)
+   ├── phishing_data.csv  (Dataset)
+
+
+📊 Screenshots
+*Homepage*
+
+📄 License & Disclaimer
+- License:*MIT License  
+- Disclaimer: This tool is designed for *educational and cybersecurity research* purposes. It should not be used for offensive security operations or unauthorized testing.
+
+🎞 Demo Video
+🔗 YouTube Link: _[Insert Video Link Here]_  
+- Covers:
+  ✅ Introduction & Problem Statement  
+  ✅ Code Walkthrough  
+  ✅ Live Demo of URL Classification  
+
+📖 Research Paper 
+Includes:
+- AI-based phishing detection techniques  
+- Feature extraction methodologies  
+- ML model training and evaluation  
+- Ethical and cybersecurity considerations  
+
+📈 Presentation (Slides)
+🔗  
+- Introduction: Problem & Solution  
+- Code/Tool Breakdown  
+- Real-World Use Cases  
+- Future Enhancements  
+
+👨‍💻 Contributors
+- Pooja Waghmare & Pavan Nag
+- *Internship Program:* Digisuraksha Parhari Foundation, Powered by Infinisec Technologies Pvt. Ltd.
+
+📩 Submission Details
+- ✅ GitHub Repo:https://github.com/pavanEX31/AI-Driven-Phishing-Detection.git
+- ✅ Email for Submission: `support@digisuraksha.org`  
+- ✅ Subject: cyberSecurity Internship Final Submission by Pooja Waghmare & Pavan Nag
